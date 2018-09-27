@@ -15,7 +15,7 @@ import android.view.ViewGroup.LayoutParams;
  * Due to the big amount of work done, by the base class this child is only responsible
  * for creating camera, destroying camera and delivering frames while camera is enabled
  */
-public class NativeCameraView extends CameraBridgeViewBase {
+public abstract class NativeCameraView extends CameraBridgeViewBase {
 
     public static final String TAG = "NativeCameraView";
     private boolean mStopThread;

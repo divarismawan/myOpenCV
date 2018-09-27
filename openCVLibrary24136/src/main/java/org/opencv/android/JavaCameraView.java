@@ -7,6 +7,7 @@ import android.graphics.ImageFormat;
 import android.graphics.SurfaceTexture;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
+import android.hardware.camera2.CaptureRequest;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -62,6 +63,11 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
 
     public JavaCameraView(Context context, AttributeSet attrs) {
         super(context, attrs);
+    }
+
+    @Override
+    public void setRotation(CaptureRequest.Key<Integer> jpegOrientation, Object o) {
+
     }
 
     protected boolean initializeCamera(int width, int height) {
@@ -193,7 +199,7 @@ public class JavaCameraView extends CameraBridgeViewBase implements PreviewCallb
                         mSurfaceTexture = new SurfaceTexture(MAGIC_TEXTURE_ID);
                         mCamera.setPreviewTexture(mSurfaceTexture);
                     } else
-                       mCamera.setPreviewDisplay(null);
+                        mCamera.setPreviewDisplay(null);
 
                     /* Finally we are ready to start the preview */
                     Log.d(TAG, "startPreview");

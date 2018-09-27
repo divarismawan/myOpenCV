@@ -16,6 +16,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.hardware.camera2.CaptureRequest;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
@@ -432,6 +433,8 @@ public abstract class CameraBridgeViewBase extends SurfaceView implements Surfac
             }
         }
     }
+
+    public abstract void setRotation(CaptureRequest.Key<Integer> jpegOrientation, Object o);
 
     /**
      * This method is invoked shall perform concrete operation to initialize the camera.

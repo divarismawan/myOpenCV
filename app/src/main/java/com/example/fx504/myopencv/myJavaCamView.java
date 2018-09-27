@@ -18,9 +18,6 @@ public class myJavaCamView extends JavaCameraView implements android.hardware.Ca
     private static final String TAG = "OpenCV";
     private String pictureName;
 
-    public myJavaCamView(Context context, int cameraId) {
-        super(context, cameraId);
-    }
 
     public void takePicture(final String fileName){
         Log.i(TAG, "Taking Picture");
@@ -31,16 +28,18 @@ public class myJavaCamView extends JavaCameraView implements android.hardware.Ca
     }
 
     @Override
-    public void onPictureTaken(byte[] data, Camera camera) {
+    public void onPictureTaken(byte[] data, android.hardware.Camera camera) {
         Log.i(TAG, "Saving");
         mCamera.startPreview();
         mCamera.setPreviewCallback(this);
 
+//        write image in a file
         try {
             FileOutputStream fos = new FileOutputStream(pictureName);
 
             fos.write(data);
             fos.close();
+
         }catch (java.io.IOException e){
             Log.e("Picture Demo","Exception",e);
         }
